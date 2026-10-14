@@ -28,20 +28,9 @@ for that assignment have to be handed in via OLAT by 17:00 on the previous day
 
 | Date       | Assignment | Topics                                                      |
 | ---------- | ---------- | ----------------------------------------------------------- |
-| 2026-03-03 |            | Administrative matters, introduction to LCC3                |
-| 2026-03-10 | [1](01)    | Working on LCC3, hardware architecture                      |
-| 2026-03-17 | [2](02)    | Initial measurements, Amdahl's law                          |
-| 2026-03-24 | [3](03)    | Sequential performance, false sharing                       |
-| 2026-04-14 | [4](04)    | Mandelbrot parallelization, cache effects                   |
-| 2026-04-21 | [5](05)    | OpenMP correctness and flush                                |
-| 2026-04-28 | [6](06)    | OpenMP aggregation, loop scheduling and Mandelbrot          |
-| 2026-05-05 | [7](07)    | Dependence Analysis                                         |
-| 2026-05-12 | [8](08)    | Auto-vectorization, dependence analysis                     |
-| 2026-05-19 | [9](9)     | First touch, OpenMP affinity and tasks                      |
-| 2026-05-26 | [10](10)   | Vectorization                                               |
-| 2026-06-02 | [11](11)   | Scalar architectures and optimizations                      |
-| 2026-06-09 | [12](12)   | Profiling and parallelization of a mystery application      |
-| 2026-06-16 | [13](13)   | N-Body simulation                                           |
+| 2026-10-07 |            | Administrative matters, introduction to LCC3                |
+| 2026-10-14 | [1](01)    | Working on LCC3, hardware architecture                      |
+| 2026-10-21 | [2](02)    | Initial measurements, Amdahl's law                          |
 
 ## General Information
 
