@@ -35,3 +35,36 @@ Execution times in seconds for each executable and thread count:
 **Q**: How stable are the measurements when running the experiments multiple times?
 
 **A**: they vary significantly HOLY
+
+## Exercise 2
+
+1. **Q**: How is the speedup of a parallel program defined?
+    - $S = \frac{T_{\text{sequential}}}{T_{\text{parallel}}}$
+
+2. **Q**: What is the formal definition of Amdahl's law and what relationship does it describe for parallel programs (explain in your own words)? Why/How is this significant?
+    - an estimation of the maximum speedup of a (partially) parallel program
+    - it's an estimate because it ignores parallelization overhead (e.g. synchronization) and other factors (basically an upper bound)
+    - $S(N) = \frac{1}{(1 - P) + \frac{P}{N}}$
+    - where P is the factor of the program that can be parallelized
+    - and P/N is the parallel portion divided by the number of processors
+    - significant: Linear speedup is ideal but rarely applicable; usually delta(S) decreases when N increases
+    ![amdahl](https://researchcomputingservices.github.io/parallel-computing/fig/speedup.svg)
+    - *THIS AIN'T PRIVATE PROPERTY*
+
+3. **Q**: Compute the theoretical speedup of a program that spends 10% of its time in unparallelizable, sequential regions for 6 cores and for a hypothetically unlimited number of cores.
+    - P := 0.9
+    - N := 6 => S(6) = 1/((1-0.9) + (0.9/6)) = 4
+    - $N \to \infty \implies \lim_{N \to \infty} \frac{P}{N} = 0 => S(\infty) = 1/(1-0.9) = 10$
+    - concl: unlimited cores would only give a max of 10x speedup
+
+4. **Q**: Compute the theoretical speedup of a program that spends 20% of its time in unparallelizable, sequential regions for 6 cores and for a hypothetically unlimited number of cores.
+    - P := 0.8
+    - N := 6 => S(6) = 1/((1-0.8) + (0.8/6)) = 3.33333...
+    - $N \to \infty \implies \lim_{N \to \infty} \frac{P}{N} = 0 => S(\infty) = 1/(1-0.8) = 5$
+    - concl: the more cores you add, the more the seq. part of the program becomes relevant
+
+5. **Q**: Given an algorithm of time complexity O(n^3). How large (in %) can the unparallelizable, sequential region be at most, such that a speedup of 10 can be achieved using 64 cores?
+    - S(64) := 10
+    - N := 64
+    - => solve for P ... P = 0.9143
+    - => 1 - P = 0.0857 = 8.57%
