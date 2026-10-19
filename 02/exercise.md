@@ -32,6 +32,8 @@ Execution times in seconds for each executable and thread count:
 | `slow_o3` | 1.3334 | 2.4928 | 4.4225 | 5.1277 | 6.2370 | 6.3825 | 7.6058 | 8.2775 |
 | `slow_ofast` | 1.1822 | 2.1493 | 3.6052 | 4.7457 | 5.2069 | 5.6745 | 6.9321 | 7.8694 |
 
+![Execution time by thread count](src/logs/execution_times.png)
+
 **Q**: How stable are the measurements when running the experiments multiple times?
 
 **A**: they vary significantly HOLY
