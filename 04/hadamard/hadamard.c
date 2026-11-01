@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // Traverse columns first
 // cache-unfriendly version for row-major matrices
@@ -48,10 +49,18 @@ int main(int argc, char **argv)
 {
 	// Use a large default size so cache behavior is measurable
 	size_t n = 1024;
-	if (argc > 2 || (argc == 2 && parse_size(argv[1], &n) != 0) ||
+	const char *mode = "both";
+	if (argc > 3 || (argc >= 2 && parse_size(argv[1], &n) != 0) ||
+		(argc == 3 && strcmp(argv[2], "row") != 0 &&
+			strcmp(argv[2], "column") != 0 &&
+			strcmp(argv[2], "both") != 0) ||
 		n == 0) {
-		fprintf(stderr, "usage: %s [positive matrix size]\n", argv[0]);
+		fprintf(stderr, "usage: %s [positive matrix size] [row|column|both]\n",
+			argv[0]);
 		return EXIT_FAILURE;
+	}
+	if (argc == 3) {
+		mode = argv[2];
 	}
 
 	// Check the multiplication before calculating the allocation size
@@ -85,19 +94,29 @@ int main(int argc, char **argv)
 		b[index / n][index % n] = (int32_t)(index % 31);
 	}
 
-	// Run both loop orderings on the same input matrices
-	hadamard_column_major(n, a, b, column_result);
-	hadamard_row_major(n, a, b, row_result);
+	if (strcmp(mode, "column") == 0 || strcmp(mode, "both") == 0) {
+		hadamard_column_major(n, a, b, column_result);
+	}
+	if (strcmp(mode, "row") == 0 || strcmp(mode, "both") == 0) {
+		hadamard_row_major(n, a, b, row_result);
+	}
 
-	// Verify that changing the traversal order does not change the result
 	int valid = 1;
-	for (size_t index = 0; index < elements; ++index) {
-		if (column_result[index / n][index % n] != row_result[index / n][index % n]) {
-			valid = 0;
-			break;
+	if (strcmp(mode, "both") == 0) {
+		for (size_t index = 0; index < elements; ++index) {
+			if (column_result[index / n][index % n] !=
+				row_result[index / n][index % n]) {
+				valid = 0;
+				break;
+			}
 		}
 	}
-	printf("n=%zu, results=%s\n", n, valid ? "equal" : "different");
+	if (strcmp(mode, "both") == 0) {
+		printf("n=%zu, results=%s\n", n, valid ? "equal" : "different");
+	} else {
+		printf("n=%zu, mode=%s, results=%s\n", n, mode,
+			valid ? "valid" : "different");
+	}
 
 	// Release all matrix storage before exiting
 	free(a);
