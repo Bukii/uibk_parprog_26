@@ -55,6 +55,7 @@ In this exercise, you are asked to investigate the effect of false sharing in mu
 
 ## General Notes
 
-All the material required by the tasks above (e.g., code, figures, text, etc...) must be part of the solution that is handed in. Your experiments should be reproducible and comparable to your measurements using the solution materials that you hand in.
+All the material required by the tasks above (e.g. code, figures, text, etc...) must be part of the solution that is presented. Your experiments should be reproducible and comparable to your own measurements using your solution materials.
 
 **Every** member of your group must be able to explain the given problem, your solution, and possible findings. You may also need to answer detailed questions about any of these aspects.
+
