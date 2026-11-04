@@ -61,3 +61,9 @@ for (size_t i = 0; i < n; ++i) {
 1) For both implementations, give a function f to calculate the number of data cache read misses for the matrix size n and the cache line size s in an 8-way set-associative cache. Assume that all variables are initialized appropriately (the matrix elements are of type `int32_t`) and that the matrices are stored in contiguous memory in row-major order. Additionally, the matrices are too large to store them entirely in the cache (n >> s).
 2) Use the two snippets to implement two versions of the Hadamard product.
 3) Log into the LCC3 cluster and analyze the cache behavior of the implementations using `cachegrind` (e.g. `valgrind --tool=cachegrind <your program>`) and `perf` (e.g. `perf stat -e LLC-load-misses -e LLC-store-misses <your program>`) Can you validate your theoretical findings? Compare the results of both tools.
+
+## General Notes
+
+All the material required by the tasks above (e.g. code, figures, text, etc...) must be part of the solution that is presented. Your experiments should be reproducible and comparable to your own measurements using your solution materials.
+
+**Every** member of your group must be able to explain the given problem, your solution, and possible findings. You may also need to answer detailed questions about any of these aspects.
