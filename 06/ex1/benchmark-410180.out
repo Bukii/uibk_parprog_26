@@ -1,0 +1,53 @@
+rm -f serial atomic critical reduction
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3    serial.c   -o serial
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3    atomic.c   -o atomic
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3    critical.c   -o critical
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3    reduction.c   -o reduction
+
+=== implementation=critical threads=1 ===
+Approximate value of pi: 3.141580
+time: 16.4660 seconds
+
+=== implementation=atomic threads=1 ===
+Approximate value of pi: 3.141586
+time: 14.1151 seconds
+
+=== implementation=reduction threads=1 ===
+Approximate value of pi: 3.141605
+time: 10.3609 seconds
+
+=== implementation=critical threads=4 ===
+Approximate value of pi: 3.141554
+time: 76.4810 seconds
+
+=== implementation=atomic threads=4 ===
+Approximate value of pi: 3.141623
+time: 11.9504 seconds
+
+=== implementation=reduction threads=4 ===
+Approximate value of pi: 3.141568
+time: 2.7006 seconds
+
+=== implementation=critical threads=8 ===
+Approximate value of pi: 3.141555
+time: 142.7014 seconds
+
+=== implementation=atomic threads=8 ===
+Approximate value of pi: 3.141592
+time: 16.7990 seconds
+
+=== implementation=reduction threads=8 ===
+Approximate value of pi: 3.141613
+time: 1.3494 seconds
+
+=== implementation=critical threads=12 ===
+Approximate value of pi: 3.141566
+time: 164.3327 seconds
+
+=== implementation=atomic threads=12 ===
+Approximate value of pi: 3.141549
+time: 22.5012 seconds
+
+=== implementation=reduction threads=12 ===
+Approximate value of pi: 3.141590
+time: 0.9012 seconds
